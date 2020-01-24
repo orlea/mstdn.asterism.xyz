@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  es:
+    restart: always
+    image: orlea/elasticsearch6-sudachi
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.type=single-node"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail localhost:9200/_cluster/health || exit 1"]
+      start_period: 180s
+    volumes:
+      - /mnt/ebs/elasticsearch:/usr/share/elasticsearch/data
+    deploy:
+      placement:
+        constraints:
+          - node.labels.type == es
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 1G
+    ports:
+    - 9200:9200
+    - 9300:9300
