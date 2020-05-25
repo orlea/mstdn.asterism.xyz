@@ -1,17 +1,23 @@
 # mstdn.asterism.xyz
 
-on docker swarm
+on docker and native postgresql/redis.
 
 ## usage
 
-stack deploy
+deploy
 
 ```
-sudo docker stack deploy mastodon -c mastodon/mstdn-asterism-xyz.yml
+cd caddy
+sudo docker-compose up -d
+cd ../mastodon
+sudo docker-compose up -d
 ```
 
 update
 
 ```
 sudo docker-compose -f mastodon/mstdn-asterism-xyz.manage.yml run --rm web rails db:migrate
+cd mastodon
+sudo docker-compose down
+sudo docker-compose up -d
 ```
