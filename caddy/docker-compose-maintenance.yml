@@ -1,12 +1,18 @@
-version: "3"
+version: "3.8"
 services:
   caddy:
     image: caddy:2-alpine
     environment:
       - ACME_AGREE=true
     ports:
-      - 443:443
-      - 80:80
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
+      - target: 443
+        published: 443
+        protocol: tcp
+        mode: host
     networks:
       - private
       - public
@@ -14,7 +20,6 @@ services:
       - /caddy_data:/data
       - ./Caddyfile:/etc/caddy/Caddyfile
       - /var/log/caddy:/var/log/caddy
-      - error-mstdn.html:/errorpages/error-mstdn.html
 
 networks:
   private:
