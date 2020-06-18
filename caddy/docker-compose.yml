@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  caddy:
+    image: caddy:2-alpine
+    environment:
+      - ACME_AGREE=true
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
+      - target: 443
+        published: 443
+        protocol: tcp
+        mode: host
+
+    networks:
+      - private
+      - public
+    volumes:
+      - /caddy_data:/data
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - /var/log/caddy:/var/log/caddy
+
+networks:
+  private:
+    external: true
+  public:
+    external: true

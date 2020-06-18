@@ -1,0 +1,12 @@
+{
+  email admin@asterism.xyz
+}
+https://mstdn.asterism.xyz {
+  root * /errorpages
+  file_server
+  encode gzip
+  respond * 503 {
+    body "Sorry, it's under maintenance.<br>You can find my contact infomation <a href=https://blog.asterism.xyz/about>here</a>."
+    close
+  }
+}

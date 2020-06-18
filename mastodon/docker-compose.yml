@@ -3,10 +3,6 @@ services:
   web:
     image: tootsuite/mastodon:v3.1.4
     deploy:
-      replicas: 2
-      placement:
-        constraints:
-          - node.role == worker
       resources:
         limits:
           memory: 1G
@@ -16,15 +12,11 @@ services:
     command: bash -c "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000"
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider --proxy=off localhost:3000/health || exit 1"]
-    ports:
-      - "127.0.0.1:3000:3000"
+    networks:
+      - private
   streaming:
     image: tootsuite/mastodon:v3.1.4
     deploy:
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == worker
       resources:
         limits:
           memory: 128M
@@ -34,15 +26,11 @@ services:
     command: node ./streaming
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider --proxy=off localhost:4000/api/v1/streaming/health || exit 1"]
-    ports:
-      - "127.0.0.1:4000:4000"
+    networks:
+      - private
   sidekiq:
     image: tootsuite/mastodon:v3.1.4
     deploy:
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == worker
       resources:
         limits:
           memory: 512M
@@ -50,3 +38,8 @@ services:
           memory: 512M
     env_file: .env.production
     command: bundle exec sidekiq -c 10
+    networks:
+      - private
+
+networks:
+  private:
