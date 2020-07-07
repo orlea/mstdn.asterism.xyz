@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    image: tootsuite/mastodon:v3.1.4
+    image: tootsuite/mastodon:v3.1.5
     deploy:
       resources:
         limits:
@@ -15,7 +15,7 @@ services:
     networks:
       - private
   streaming:
-    image: tootsuite/mastodon:v3.1.4
+    image: tootsuite/mastodon:v3.1.5
     deploy:
       resources:
         limits:
@@ -29,7 +29,7 @@ services:
     networks:
       - private
   sidekiq:
-    image: tootsuite/mastodon:v3.1.4
+    image: tootsuite/mastodon:v3.1.5
     deploy:
       resources:
         limits:
