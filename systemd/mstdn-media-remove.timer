@@ -1,0 +1,8 @@
+[Unit]
+Description=Mastodon remote media remove timer
+
+[Timer]
+OnCalendar=Mon *-*-* 00:00:00 Asia/Tokyo
+
+[Install]
+WantedBy=timers.target
