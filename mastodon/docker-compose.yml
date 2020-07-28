@@ -14,6 +14,10 @@ services:
       test: ["CMD-SHELL", "wget -q --spider --proxy=off localhost:3000/health || exit 1"]
     networks:
       - private
+    restart: always
+    volumes:
+      - ./search_service.rb:/opt/mastodon/app/services/search_service.rb
+      - ./statuses_index.rb:/opt/mastodon/app/chewy/statuses_index.rb
   streaming:
     image: tootsuite/mastodon:v3.2.0
     deploy:
@@ -28,6 +32,7 @@ services:
       test: ["CMD-SHELL", "wget -q --spider --proxy=off localhost:4000/api/v1/streaming/health || exit 1"]
     networks:
       - private
+    restart: always
   sidekiq:
     image: tootsuite/mastodon:v3.2.0
     deploy:
@@ -40,6 +45,8 @@ services:
     command: bundle exec sidekiq -c 10
     networks:
       - private
+    restart: always
 
 networks:
   private:
+    external: true

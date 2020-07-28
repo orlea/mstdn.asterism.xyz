@@ -7,4 +7,7 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider --header 'x-forwarded-proto: https' --proxy=off localhost:3000/api/v1/instance || exit 1"]
     ports:
-      - "3001:3001"
+      - "3001:3000"
+    volumes:
+      - ./search_service.rb:/opt/mastodon/app/services/search_service.rb
+      - ./statuses_index.rb:/opt/mastodon/app/chewy/statuses_index.rb
