@@ -39,7 +39,6 @@ class SearchService < BaseService
           .where("statuses.text &@~ ?", @query)
           .limit(@limit)
           .offset(@offset)
-          .order("statuses.id DESC")
 
     if @options[:account_id].present?
       results = results
