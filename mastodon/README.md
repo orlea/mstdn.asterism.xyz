@@ -12,6 +12,10 @@ https://github.com/yi0713/mastodon/blob/kurage/app/chewy/statuses_index.rb
 
 https://github.com/yi0713/mastodon/blob/kurage/app/services/search_service.rb
 
+## AGPL Licence
+
+- https://github.com/tootsuite/mastodon
+- https://github.com/yi0713/mastodon
 
 ## 参考
 
