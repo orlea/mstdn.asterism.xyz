@@ -1,17 +1,19 @@
 # オリジナルからのソースコード変更点
 
-PGroongaを使って検索できるように修正。
+Elasticsearch + sudachiを使って検索できるように修正。
 
-以下3ファイルを下記リポジトリから頂いています。
+以下2ファイル内の一部コードを下記リポジトリから頂いています。
 
-- dashboard_controller.rb
-- initial_state_serializer.rb
+- statuses_index.rb
 - search_service.rb
+
+直接の変更点はdiffしてくださいな。
 
 ## AGPL Licence
 
-- https://github.com/accelforce/odakyudon/tree/custom/pgroonga
+- https://github.com/yi0713/mastodon/tree/kurage
 
 ## 参考
 
-- https://b.accelf.net/mastodon/20190524-mastodon-full-text-search-using-pgroonga/#more
+- https://blog.noellabo.jp/entry/2019/04/19/YNUL9UsohRgNKSya
+- https://kurage.cc/blog-sudachi/
