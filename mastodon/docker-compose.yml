@@ -18,6 +18,12 @@ services:
     volumes:
       - ./search_service.rb:/opt/mastodon/app/services/search_service.rb
       - ./statuses_index.rb:/opt/mastodon/app/chewy/statuses_index.rb
+    logging:
+      driver: "awslogs"
+      options:
+        awslogs-region: "ap-northeast-1"
+        awslogs-group: "hogehoge"
+        awslogs-stream: "web"
   streaming:
     image: tootsuite/mastodon:v3.2.1
     deploy:
@@ -33,6 +39,12 @@ services:
     networks:
       - private
     restart: always
+    logging:
+      driver: "awslogs"
+      options:
+        awslogs-region: "ap-northeast-1"
+        awslogs-group: "hogehoge"
+        awslogs-stream: "sidekiq"
   sidekiq:
     image: tootsuite/mastodon:v3.2.1
     deploy:
@@ -49,6 +61,12 @@ services:
     volumes:
       - ./search_service.rb:/opt/mastodon/app/services/search_service.rb
       - ./statuses_index.rb:/opt/mastodon/app/chewy/statuses_index.rb
+    logging:
+      driver: "awslogs"
+      options:
+        awslogs-region: "ap-northeast-1"
+        awslogs-group: "hogehoge"
+        awslogs-stream: "streaming"
 
 networks:
   private:

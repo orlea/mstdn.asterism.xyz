@@ -59,4 +59,8 @@ https://mstdn.asterism.xyz {
       keepalive_idle_conns 10
     }
   }
+  log {
+    output stdout
+    format console
+  }
 }
