@@ -1,6 +1,6 @@
 # mstdn.asterism.xyz
 
-on docker and native postgresql/redis.
+on docker and native postgresql/redis/elasticsearch.
 
 ## usage
 

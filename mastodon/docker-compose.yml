@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    image: tootsuite/mastodon:v3.2.1
+    image: orlea/mastodon:3.2.1-MOD
     deploy:
       resources:
         limits:
@@ -15,9 +15,6 @@ services:
     networks:
       - private
     restart: always
-    volumes:
-      - ./search_service.rb:/opt/mastodon/app/services/search_service.rb
-      - ./statuses_index.rb:/opt/mastodon/app/chewy/statuses_index.rb
     logging:
       driver: "awslogs"
       options:
@@ -25,7 +22,7 @@ services:
         awslogs-group: "hogehoge"
         awslogs-stream: "web"
   streaming:
-    image: tootsuite/mastodon:v3.2.1
+    image: orlea/mastodon:3.2.1-MOD
     deploy:
       resources:
         limits:
@@ -46,7 +43,7 @@ services:
         awslogs-group: "hogehoge"
         awslogs-stream: "sidekiq"
   sidekiq:
-    image: tootsuite/mastodon:v3.2.1
+    image: orlea/mastodon:3.2.1-MOD
     deploy:
       resources:
         limits:
@@ -58,9 +55,6 @@ services:
     networks:
       - private
     restart: always
-    volumes:
-      - ./search_service.rb:/opt/mastodon/app/services/search_service.rb
-      - ./statuses_index.rb:/opt/mastodon/app/chewy/statuses_index.rb
     logging:
       driver: "awslogs"
       options:

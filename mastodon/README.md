@@ -1,17 +1,10 @@
 # オリジナルからのソースコード変更点
 
-Elasticsearch + sudachiを使って検索できるように修正。
+Elasticsearch + sudachiを使って検索できるように修正しています。
 
-以下2ファイル内の一部コードを下記リポジトリから頂いています。
+ソースコードは以下
 
-- statuses_index.rb
-- search_service.rb
-
-直接の変更点はdiffしてくださいな。
-
-## AGPL Licence
-
-- https://github.com/yi0713/mastodon/tree/kurage
+https://github.com/orlea/mastodon/tree/mstdn-asterism-xyz
 
 ## 参考
 
