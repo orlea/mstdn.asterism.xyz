@@ -1,0 +1,7 @@
+[Unit]
+Description=weekley pg_dumpall
+
+[Service]
+Type=simple
+ExecStart=/hoge/psql-backup.sh
+User=hogehoge

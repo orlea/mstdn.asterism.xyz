@@ -1,0 +1,9 @@
+[Unit]
+Description=weekley pg_dumpall
+
+[Timer]
+OnCalendar=Mon *-*-* 00:00:00 Asia/Tokyo
+Persistent=true
+
+[Install]
+WantedBy=timers.target
